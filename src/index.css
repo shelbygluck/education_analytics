@@ -42,9 +42,10 @@ segment {
   margin: 20px;
   padding: 6px;
   border-style: outset;
-  box-shadow: 3px 3px lightseagreen;
+  box-shadow: 2px 2px darkslategray;
   flex-grow: 1;
   border-color: lightseagreen;
+  background-color: lightseagreen;
 }
 
 .large {
@@ -52,9 +53,10 @@ segment {
   margin: 20px;
   padding: 6px;
   border-style: outset;
-  box-shadow: 3px 3px lightcoral;
+  box-shadow: 2px 2px darkslategray;
   flex-grow: 3;
   border-color: lightcoral;
+  background-color: lightcoral;
 }
 
 .button {
@@ -75,4 +77,8 @@ segment {
 h2 {
   color: lightseagreen;
   text-shadow: 1px 1px;
+}
+
+h2:hover {
+  color: lightcoral;
 }
