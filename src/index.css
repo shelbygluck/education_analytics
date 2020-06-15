@@ -24,12 +24,16 @@ code {
 
 #container {
   display: flex;
-  flex-direction: row;
-  flex-grow: 1;
-  flex-wrap: wrap;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   margin: 20px;
+}
+
+segment {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
 }
 
 .small {
@@ -50,9 +54,14 @@ code {
   border-color: lightslategray;
 }
 
-
 .button {
   color: lightseagreen;
+  display: flex;
+  margin: 20px;
+  padding: 6px;
+  border-style: double;
+  flex-grow: 1;
+  border-color: lightslategray;
 }
 
 .button:hover {

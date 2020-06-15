@@ -16,22 +16,26 @@ class App extends Component {
     return (
       <div id="main">
       <div id="container">
-        <p className="small">school name/alias</p>
-        <p className="small">school website</p>
-         <div className="rowMultiples">
+        <segment>
+            <p className="small">school name/alias</p>
+            <p className="small">school website</p>
+          </segment>
+          <segment>
            <p className="small">city</p>
            <p className="small">state</p>
            <p className="small">zip</p>
-         </div>
-         <p className="small">Student Population: </p>
-         <p className="large">Graph 1</p>
-         <p className="large">Graph 2</p>
-         <p className="large">Graph 3</p>
-         <div className="rowMultiples">
+          <p className="small">Student Population: </p>
+          </segment>
+          <segment>
+            <p className="large">Graph 1</p>
+            <p className="large">Graph 2</p>
+            <p className="large">Graph 3</p>
+          </segment>
+          <segment>
             <button onClick={() => {alert('save')}} className="button">SAVE</button>
             <button onClick={() => {alert('download')}} className="button">DOWNLOAD</button>
             <button onClick={() => {alert('print')}} className="button" >PRINT</button>
-         </div>
+            </segment>
       </div>
       <h2 id="bottomLogo">EDUCATION ANALYTICS</h2>
       </div>
