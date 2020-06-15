@@ -32,9 +32,9 @@ class App extends Component {
             <p className="large">Graph 3</p>
           </segment>
           <segment>
-            <button onClick={() => {alert('save')}} className="button">SAVE</button>
-            <button onClick={() => {alert('download')}} className="button">DOWNLOAD</button>
-            <button onClick={() => {alert('print')}} className="button" >PRINT</button>
+            <p onClick={() => {alert('save')}} className="button">SAVE</p>
+            <p onClick={() => {alert('download')}} className="button">DOWNLOAD</p>
+            <p onClick={() => {alert('print')}} className="button" >PRINT</p>
             </segment>
       </div>
       <h2 id="bottomLogo">EDUCATION ANALYTICS</h2>
