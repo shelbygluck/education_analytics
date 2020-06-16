@@ -15,13 +15,20 @@ class App extends Component {
     const data = response.data.results[0]
     const schoolName = data.school.name
     const alias = data.school.alias
+      //check for null
     const city = data.school.city
     const state = data.school.state
     const zip = data.school.zip
     const size = data.latest.student.size
+    const programsByPercent = data.latest.academics.program_percentage
+      //get rid of null
+    const raceBreakdown = data.latest.student.demographics.race_ethnicity
+    const inStateTuition = data.latest.cost.tuition.out_of_state
+    const outStateTuition = data.latest.cost.tuition.in_state
+    const actScores = data.latest.admissions.act_scores
+    const satScores = data.latest.admissions.sat_scores
 
-
-    console.log(schoolName, alias, city, state, zip, size)
+    console.log(schoolName, alias, city, state, zip, size, 'programs', programsByPercent, 'race', raceBreakdown, 'tuitions', inStateTuition, outStateTuition, 'scores', actScores, satScores)
   }
 
   render() {   
