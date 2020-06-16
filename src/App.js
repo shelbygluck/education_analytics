@@ -9,9 +9,10 @@ class App extends Component {
     }
   }
   
-  comopnentDidMount() {
+  componentDidMount() {
 
   }
+
   render() {   
     return (
       <div id="main">

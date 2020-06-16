@@ -59,6 +59,15 @@ segment {
   background-color: lightcoral;
 }
 
+.small:hover {
+  box-shadow: 4px 4px darkslategray;
+}
+
+.large:hover {
+  box-shadow: 4px 4px darkslategray;
+
+}
+
 .button {
   color: white;
   display: flex;
@@ -72,6 +81,7 @@ segment {
 
 .button:hover {
   color: lightcoral;
+  box-shadow: 4px 4px lightseagreen;  
 }
 
 h2 {
