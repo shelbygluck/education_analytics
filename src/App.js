@@ -12,7 +12,16 @@ class App extends Component {
   
   async componentDidMount() {
     const response = await axios.get('https://api.data.gov/ed/collegescorecard/v1/schools/?school.operating=1&2015.academics.program_available.assoc_or_bachelors=true&2015.student.size__range=1..&school.degrees_awarded.predominant__range=1..3&school.degrees_awarded.highest__range=2..4&id=240444&api_key=iP5R8AwSIZG19HgI2rwBYb4xwmYIeNYbyNUizpqC')
-    console.log(response.data)
+    const data = response.data.results[0]
+    const schoolName = data.school.name
+    const alias = data.school.alias
+    const city = data.school.city
+    const state = data.school.state
+    const zip = data.school.zip
+    const size = data.latest.student.size
+
+
+    console.log(schoolName, alias, city, state, zip, size)
   }
 
   render() {   
