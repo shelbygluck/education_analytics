@@ -18,10 +18,10 @@ code {
   align-items: center;
 }
 
-#bottomLogo {
+/* #bottomLogo {
   position: fixed;
   bottom: 0;
-}
+} */
 
 #container {
   display: flex;
@@ -35,6 +35,12 @@ segment {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+}
+
+footer {
+  display: flex;
+  position: fixed;
+  bottom: 0;
 }
 
 .small {
