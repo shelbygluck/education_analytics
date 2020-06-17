@@ -7,6 +7,7 @@ import html2canvas from "html2canvas"
 import pdfConverter from "jspdf"
 import { CSVLink } from "react-csv"
 import organizeInitialData from "./utils"
+import apiKey from './apiKey'
 
 class App extends Component {
    constructor(props) {
@@ -35,7 +36,7 @@ class App extends Component {
 
    async componentDidMount() {
       const responseMeta = await axios.get(
-         "https://api.data.gov/ed/collegescorecard/v1/schools/?school.operating=1&2015.academics.program_available.assoc_or_bachelors=true&2015.student.size__range=1..&school.degrees_awarded.predominant__range=1..3&school.degrees_awarded.highest__range=2..4&id=240444&api_key=iP5R8AwSIZG19HgI2rwBYb4xwmYIeNYbyNUizpqC"
+         `https://api.data.gov/ed/collegescorecard/v1/schools/?school.operating=1&2015.academics.program_available.assoc_or_bachelors=true&2015.student.size__range=1..&school.degrees_awarded.predominant__range=1..3&school.degrees_awarded.highest__range=2..4&id=240444&api_key=${apiKey}`
       )
       let response = responseMeta.data.results[0]
       const data = organizeInitialData(response)
