@@ -6,6 +6,7 @@ import {Loading} from './loading'
 import html2canvas from 'html2canvas'
 import pdfConverter from 'jspdf'
 import {CSVLink} from "react-csv"
+import organizeInitialData from './utils'
 
 class App extends Component {
   constructor(props) {
@@ -24,75 +25,23 @@ class App extends Component {
       outStateTuition: 0,
       actScores: {},
       satScores: {},
+      genCSV: [],
+      programCSV: [],
+      raceCSV: [],
+      testCSV: [],
       dataLoaded: false,
-      genData: [],
-      programData: [],
-      raceData: [],
-      testData: []
     }
   }
   
   async componentDidMount() {
-    const response = await axios.get('https://api.data.gov/ed/collegescorecard/v1/schools/?school.operating=1&2015.academics.program_available.assoc_or_bachelors=true&2015.student.size__range=1..&school.degrees_awarded.predominant__range=1..3&school.degrees_awarded.highest__range=2..4&id=240444&api_key=iP5R8AwSIZG19HgI2rwBYb4xwmYIeNYbyNUizpqC')
-    const data = response.data.results[0]
-    console.log(data)
-    let name = data.school.name
-    if (data.school.alias != null) {name = `${data.school.name} - ${data.school.alias}`}
-    this.setState({
-        name: name,
-        website: data.school.school_url,
-        city: data.school.city,
-        state: data.school.state,
-        zip: data.school.zip,
-        size: data.latest.student.size,
-        programsByPercent: data.latest.academics.program_percentage,
-        raceBreakdown: data.latest.student.demographics.race_ethnicity,
-        inStateTuition: data.latest.cost.tuition.out_of_state,
-        outStateTuition: data.latest.cost.tuition.in_state,
-        actScores: data.latest.admissions.act_scores,
-        satScores: data.latest.admissions.sat_scores,
-        dataLoaded: true
-    })
+    const responseMeta = await axios.get('https://api.data.gov/ed/collegescorecard/v1/schools/?school.operating=1&2015.academics.program_available.assoc_or_bachelors=true&2015.student.size__range=1..&school.degrees_awarded.predominant__range=1..3&school.degrees_awarded.highest__range=2..4&id=240444&api_key=iP5R8AwSIZG19HgI2rwBYb4xwmYIeNYbyNUizpqC')
+    let response = responseMeta.data.results[0]
+    const data = organizeInitialData(response)
+
+    this.setState(data)
+    this.setState({dataLoaded: true})
     
-    const programHeader = Object.keys(data.latest.academics.program_percentage)
-    const programAccessors = Object.values(data.latest.academics.program_percentage)
-
-    const raceHeader = Object.keys(data.latest.student.demographics.race_ethnicity)
-    const raceAccessors = Object.values(data.latest.student.demographics.race_ethnicity)
-
-    const actHeader = Object.keys(data.latest.admissions.act_scores)
-    const actAccessors = Object.values(data.latest.admissions.act_scores)
-
-    const satHeader = Object.keys(data.latest.admissions.sat_scores)
-    const satAccessors = Object.values(data.latest.admissions.act_scores)
-
-    const genData = [
-      ['name', 'website', 'city', 'state', 'zip', 'size'],
-      [data.school.name, data.school.school_url, data.school.city, data.school.state, data.school.zip, data.latest.student.size],
-    ]
-
-    const programData = [
-      [programHeader],
-      [programAccessors]
-    ]
-
-    const raceData = [
-      [raceHeader],
-      [raceAccessors]
-    ]
-
-    const testData = [
-      [actHeader, satHeader],
-      [actAccessors, satAccessors]
-    ]
-    
-    console.log(data.latest.student.demographics.race_ethnicity)
-    this.setState({
-      genData: genData,
-      programData: programData,
-      raceData: raceData,
-      testData: testData
-    })
+    console.log(this.state)
     }
 
   saveAsPDF = () => {
@@ -138,7 +87,7 @@ class App extends Component {
               <p className="downloadBar">DOWNLOAD DATA: 
               <CSVLink
                       className="singleDownload"
-                      data={this.state.genData}
+                      data={this.state.genCSV}
                       ref={(r) => this.csvLink = r}
                       filename={'genData.csv'}
                       target="_blank"
@@ -146,7 +95,7 @@ class App extends Component {
                   </CSVLink>
                   <CSVLink
                       className="singleDownload"
-                      data={this.state.raceData}
+                      data={this.state.raceCSV}
                       ref={(r) => this.csvLink = r}
                       filename={'raceEthnData.csv'}
                       target="_blank"
@@ -154,7 +103,7 @@ class App extends Component {
                   </CSVLink>
                   <CSVLink
                       className="singleDownload"
-                      data={this.state.programData}
+                      data={this.state.programCSV}
                       ref={(r) => this.csvLink = r}
                       filename={'programData.csv'}
                       target="_blank"
