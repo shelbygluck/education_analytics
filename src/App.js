@@ -5,6 +5,7 @@ import axios from 'axios'
 import {Loading} from './loading'
 import html2canvas from 'html2canvas'
 import pdfConverter from 'jspdf'
+import {CSVLink} from "react-csv"
 
 class App extends Component {
   constructor(props) {
@@ -23,7 +24,11 @@ class App extends Component {
       outStateTuition: 0,
       actScores: {},
       satScores: {},
-      dataLoaded: false
+      dataLoaded: false,
+      genData: [],
+      programData: [],
+      raceData: [],
+      testData: []
     }
   }
   
@@ -48,8 +53,47 @@ class App extends Component {
         satScores: data.latest.admissions.sat_scores,
         dataLoaded: true
     })
-    console.log(this.state)
-  }
+    
+    const programHeader = Object.keys(data.latest.academics.program_percentage)
+    const programAccessors = Object.values(data.latest.academics.program_percentage)
+
+    const raceHeader = Object.keys(data.latest.student.demographics.race_ethnicity)
+    const raceAccessors = Object.values(data.latest.student.demographics.race_ethnicity)
+
+    const actHeader = Object.keys(data.latest.admissions.act_scores)
+    const actAccessors = Object.values(data.latest.admissions.act_scores)
+
+    const satHeader = Object.keys(data.latest.admissions.sat_scores)
+    const satAccessors = Object.values(data.latest.admissions.act_scores)
+
+    const genData = [
+      ['name', 'website', 'city', 'state', 'zip', 'size'],
+      [data.school.name, data.school.school_url, data.school.city, data.school.state, data.school.zip, data.latest.student.size],
+    ]
+
+    const programData = [
+      [programHeader],
+      [programAccessors]
+    ]
+
+    const raceData = [
+      [raceHeader],
+      [raceAccessors]
+    ]
+
+    const testData = [
+      [actHeader, satHeader],
+      [actAccessors, satAccessors]
+    ]
+    
+    console.log(data.latest.student.demographics.race_ethnicity)
+    this.setState({
+      genData: genData,
+      programData: programData,
+      raceData: raceData,
+      testData: testData
+    })
+    }
 
   saveAsPDF = () => {
     let input = window.document.getElementById('schoolData')
@@ -88,8 +132,33 @@ class App extends Component {
             </div>
             <segment>
               <p onClick={this.saveAsPDF}  className="button">SAVE</p>
-              <p onClick={() => {alert('download')}} className="button">DOWNLOAD</p>
-              <p onClick={() => {alert('print')}} className="button" >PRINT</p>
+              <p onClick={() => {alert('print')}} className="button">PRINT</p>
+            </segment>
+            <segment>
+              <CSVLink
+                      className="button"
+                      data={this.state.genData}
+                      ref={(r) => this.csvLink = r}
+                      filename={'genData.csv'}
+                      target="_blank"
+                      >DOWNLOAD (general data)
+                  </CSVLink>
+                  <CSVLink
+                      className="button"
+                      data={this.state.raceData}
+                      ref={(r) => this.csvLink = r}
+                      filename={'raceEthnData.csv'}
+                      target="_blank"
+                    >DOWNLOAD (race/ethnicity data)
+                  </CSVLink>
+                  <CSVLink
+                      className="button"
+                      data={this.state.programData}
+                      ref={(r) => this.csvLink = r}
+                      filename={'programData.csv'}
+                      target="_blank"
+                      >DOWNLOAD (program data)
+                    </CSVLink>
               </segment>
         </div>
        ) : <Loading type="balls" color="lightseagreen" />}

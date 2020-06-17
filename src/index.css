@@ -84,6 +84,8 @@ footer {
   box-shadow: 3px 3px lightseagreen;  
   flex-grow: 1;
   border-color: lightseagreen;
+  text-decoration: none;
+  max-width: 150px;
 }
 
 .button:hover {
