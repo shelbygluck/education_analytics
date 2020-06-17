@@ -84,12 +84,7 @@ class App extends Component {
                      <p onClick={this.saveAsPDF} className="button">
                         SAVE
                      </p>
-                     <p
-                        onClick={() => {
-                           alert("print")
-                        }}
-                        className="button"
-                     >
+                     <p onClick={() => window.print()} className="button">
                         PRINT
                      </p>
                   </segment>
