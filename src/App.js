@@ -8,6 +8,7 @@ import pdfConverter from "jspdf"
 import { CSVLink } from "react-csv"
 import organizeInitialData from "./utils"
 import apiKey from './apiKey'
+import {DoughnutChart} from './Doughnut'
 
 class App extends Component {
    constructor(props) {
@@ -77,6 +78,8 @@ class App extends Component {
                      </segment>
                      <segment>
                         <p className="large">Graph 1</p>
+                        <DoughnutChart labels={this.state.raceCSV[0]} datasets={this.state.raceCSV[1]} />
+                        
                         <p className="large">Graph 2</p>
                         <p className="large">Graph 3</p>
                      </segment>

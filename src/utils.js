@@ -28,16 +28,16 @@ export default function organizeInitialData(data) {
 	const satHeader = Object.keys(satScores)
 	const satAccessors = Object.values(satScores)
  
+	const testHeader = actHeader.concat(satHeader)
+	const testAccessors = actAccessors.concat(actAccessors)
+
 	const genCSV = [
 	   ["name", "website", "city", "state", "zip", "size"],
 	   [name, website, city, state, zip, size],
 	]
-	const programCSV = [[programHeader], [programAccessors]]
-	const raceCSV = [[raceHeader], [raceAccessors]]
-	const testCSV = [
-	   [actHeader, satHeader],
-	   [actAccessors, satAccessors],
-	]
+	const programCSV = [programHeader, programAccessors]
+	const raceCSV = [raceHeader, raceAccessors]
+	const testCSV = [testHeader, testAccessors]
  
 	return {
 	   name: name,
