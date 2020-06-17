@@ -21,20 +21,20 @@ export default function organizeInitialData(data) {
 	//filtering through data for graphs to remove empty categories
 	let noNullPrograms = {}
 	for (let [key, value] of Object.entries(programsByPercent)) {
-		if (value !== 0) {noNullPrograms[key] = value}
+		if (value !== 0 && value > .01) {noNullPrograms[key] = value}
 	}
-
-	let programHeader = Object.keys(noNullPrograms)
-	const programAccessors = Object.values(noNullPrograms)
 
 	let noNullRace = {}
 	for (let [key, value] of Object.entries(raceBreakdown)) {
-		if (value !== null) {noNullRace[key] = value}
+		//transforming percent of student body to actual number of students
+		let numOfStudents = Math.round(size * value)
+		if (value !== null) {noNullRace[key] = numOfStudents}
 	  }
-	  console.log(raceBreakdown)
-	  console.log('no null', noNullRace)
 	  
 	//breaking down objects into separate arrays of labels and data values
+	const programHeader = Object.keys(noNullPrograms)
+	const programAccessors = Object.values(noNullPrograms)
+
 	const raceHeader = Object.keys(noNullRace)
 	const raceAccessors = Object.values(noNullRace)
  

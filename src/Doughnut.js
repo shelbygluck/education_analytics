@@ -1,30 +1,49 @@
-import {Pie} from 'react-chartjs-2'
+import {defaults, Doughnut} from 'react-chartjs-2'
 import React, {Component} from 'react'
+defaults.global.legend.display = false
+defaults.global.title.display = true
 
 export class DoughnutChart extends Component {
 
     constructor(props) {
         super(props)
-        this.state = {
-            labels: this.props.labels,
-            datasets: [{
-                data: this.props.datasets,
-                backgroundColor: ['lightcoral', 'lightseagreen']
-            }]
-        }
+        this.state = {}
     }
 
     render() {
-        // console.log(this.props.datasets)
         return (
             <div className="chart">
-                    <h3>Race Breakdown</h3>
-                    <Pie
+                    <Doughnut
                         data={{
                             labels: this.state.labels,
-                            datasets: this.state.datasets
+                            datasets: [
+                            {
+                                data: this.props.datasets,
+                                backgroundColor: [    
+                                      'lightslategray',
+                                      'lightseagreen',
+                                      'darkslategray',       
+                                      'white',
+                                      'lightcoral',
+                                      'lightseagreen',
+                                      'lightslategray',
+                                      'darkslategray',       
+                                      'white',
+                                      'lightcoral',
+                                      'lightslategray',
+                                      'lightseagreen',
+                                      'darkslategray',       
+                                      'white',
+                                      'lightcoral',
+                                      'lightslategray',
+                                      'lightseagreen',
+                                      'darkslategray',       
+                                      'white',
+                                      'lightcoral',
+                            ]
+                            }]
                         }}
-                        height='180%'
+                        height='300%'
                     />
                     <br />
             </div>

@@ -78,11 +78,18 @@ class App extends Component {
                         </p>
                      </segment>
                      <segment>
-                        <p className="large">Graph 1</p>
-                        <DoughnutChart labels={this.state.raceCSV[0]} datasets={this.state.raceCSV[1]} />
-
-                        <p className="large">Graph 2</p>
-                        <p className="large">Graph 3</p>
+                        <div className="chartContainer">
+                        <h3>Race/Ethnicity</h3>
+                        <DoughnutChart labels={this.state.raceCSV[0]} datasets={this.state.raceCSV[1]}  />
+                        </div>
+                        <div className="chartContainer">
+                        <h3>Academic Programs</h3>
+                        <DoughnutChart labels={this.state.programCSV[0]} datasets={this.state.programCSV[1]} title="Program Breakdown" />
+                        </div>
+                        {/* <div className="chartContainer">
+                        <h3>Standardized Tests</h3>
+                        <DoughnutChart labels={this.state.testCSV[0]} datasets={this.state.testCSV[1]} title="Program Breakdown" />
+                        </div> */}
                      </segment>
                   </div>
                   <segment>
