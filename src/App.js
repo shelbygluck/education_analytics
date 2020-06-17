@@ -76,15 +76,42 @@ class App extends Component {
                         <p className="small">
                            Student Population: {this.state.size}
                         </p>
+                        <CSVLink
+                              className="singleDownload"
+                              data={this.state.genCSV}
+                              ref={(r) => (this.csvLink = r)}
+                              filename={"genData.csv"}
+                              target="_blank"
+                           >
+                              DOWNLOAD <br/>  GENERAL DATA
+                           </CSVLink>
                      </segment>
                      <segment>
                         <div className="chartContainer">
                         <h3>Race/Ethnicity</h3>
                         <DoughnutChart labels={this.state.raceCSV[0]} datasets={this.state.raceCSV[1]}  />
+                        <CSVLink
+                           className="singleDownload"
+                           data={this.state.raceCSV}
+                           ref={(r) => (this.csvLink = r)}
+                           filename={"raceEthnData.csv"}
+                           target="_blank"
+                        >
+                           DOWNLOAD THIS DATA
+                        </CSVLink>
                         </div>
                         <div className="chartContainer">
                         <h3>Academic Programs</h3>
                         <DoughnutChart labels={this.state.programCSV[0]} datasets={this.state.programCSV[1]} title="Program Breakdown" />
+                        <CSVLink
+                           className="singleDownload"
+                           data={this.state.programCSV}
+                           ref={(r) => (this.csvLink = r)}
+                           filename={"programData.csv"}
+                           target="_blank"
+                        >
+                           DOWNLOAD THIS DATA
+                        </CSVLink>
                         </div>
                         {/* <div className="chartContainer">
                         <h3>Standardized Tests</h3>
@@ -100,47 +127,28 @@ class App extends Component {
                         PRINT
                      </p>
                   </segment>
-                  <segment>
-                     <p className="downloadBar">
-                        DOWNLOAD DATA:
-                        <CSVLink
-                           className="singleDownload"
-                           data={this.state.genCSV}
-                           ref={(r) => (this.csvLink = r)}
-                           filename={"genData.csv"}
-                           target="_blank"
-                        >
-                           GENERAL
-                        </CSVLink>
-                        <CSVLink
-                           className="singleDownload"
-                           data={this.state.raceCSV}
-                           ref={(r) => (this.csvLink = r)}
-                           filename={"raceEthnData.csv"}
-                           target="_blank"
-                        >
-                           RACE/ETHNICITY
-                        </CSVLink>
-                        <CSVLink
-                           className="singleDownload"
-                           data={this.state.programCSV}
-                           ref={(r) => (this.csvLink = r)}
-                           filename={"programData.csv"}
-                           target="_blank"
-                        >
-                           PROGRAMS
-                        </CSVLink>
-                     </p>
-                  </segment>
                </div>
             ) : (
                <Loading type="balls" color="lightseagreen" />
             )}
-            <footer>
-               <Loading type="bars" color="lightcoral" />
+            <div id="footer">
                <h2 id="bottomLogo">EDUCATION ANALYTICS</h2>
+               <div className="logo">
                <Loading type="bars" color="darkslategray" />
-            </footer>
+               <Loading type="bars" color="lightseagreen" />
+               <Loading type="bars" color="lightcoral" />
+               <Loading type="bars" color="lightseagreen" />
+               <Loading type="bars" color="darkslategray" />
+               </div>
+               <div className="logo">
+               <Loading type="bars" color="darkslategray" />
+               <Loading type="bars" color="lightseagreen" />
+               <Loading type="bars" color="lightcoral" />
+               <Loading type="bars" color="lightseagreen" />
+               <Loading type="bars" color="darkslategray" />
+               </div>
+               
+            </div>
          </div>
       )
    }

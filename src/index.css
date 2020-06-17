@@ -18,11 +18,6 @@ code {
 	align-items: center;
 }
 
-/* #bottomLogo {
-  position: fixed;
-  bottom: 0;
-} */
-
 #container {
 	display: flex;
 	flex-direction: column;
@@ -35,12 +30,18 @@ segment {
 	display: flex;
 	flex-direction: row;
 	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
 }
 
-footer {
+#footer {
 	display: flex;
-	position: fixed;
-	bottom: 0;
+	flex-direction: column;
+}
+
+.logo {
+	display: flex;
+	justify-content: center;
 }
 
 .small {
@@ -64,6 +65,7 @@ footer {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	margin-bottom: 40px;
 }
 
 .chart {
@@ -99,6 +101,7 @@ footer {
 
 .singleDownload {
 	color: white;
+	font-size: 12px;
 	text-decoration: none;
 	padding-top: 10px;
 }
@@ -126,5 +129,4 @@ h2:hover {
 
 .chart {
   color: lightseagreen;
-
 }
