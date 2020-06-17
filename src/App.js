@@ -9,6 +9,7 @@ class App extends Component {
     super(props)
     this.state = {
       name: '',
+      website: '',
       alias: '',
       city: '',
       state: '',
@@ -27,10 +28,12 @@ class App extends Component {
   async componentDidMount() {
     const response = await axios.get('https://api.data.gov/ed/collegescorecard/v1/schools/?school.operating=1&2015.academics.program_available.assoc_or_bachelors=true&2015.student.size__range=1..&school.degrees_awarded.predominant__range=1..3&school.degrees_awarded.highest__range=2..4&id=240444&api_key=iP5R8AwSIZG19HgI2rwBYb4xwmYIeNYbyNUizpqC')
     const data = response.data.results[0]
-  
+    console.log(data)
+    let name = data.school.name
+    if (data.school.alias != null) {name = `${data.school.name} - ${data.school.alias}`}
     this.setState({
-        name: data.school.name,
-        alias: data.school.alias,
+        name: name,
+        website: data.school.school_url,
         city: data.school.city,
         state: data.school.state,
         zip: data.school.zip,
@@ -53,14 +56,14 @@ class App extends Component {
       {dataLoaded ? (
         <div id="container">
           <segment>
-              <p className="small">school name/alias</p>
-              <p className="small">school website</p>
+              <p className="small">{this.state.name}</p>
+              <p className="small">{this.state.website}</p>
             </segment>
             <segment>
-            <p className="small">city</p>
-            <p className="small">state</p>
-            <p className="small">zip</p>
-            <p className="small">Student Population: </p>
+            <p className="small">{this.state.city}</p>
+            <p className="small">{this.state.state}</p>
+            <p className="small">{this.state.zip}</p>
+            <p className="small">Student Population: {this.state.size}</p>
             </segment>
             <segment>
               <p className="large">Graph 1</p>
