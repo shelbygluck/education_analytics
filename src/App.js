@@ -135,30 +135,32 @@ class App extends Component {
               <p onClick={() => {alert('print')}} className="button">PRINT</p>
             </segment>
             <segment>
+              <p className="downloadBar">DOWNLOAD DATA: 
               <CSVLink
-                      className="button"
+                      className="singleDownload"
                       data={this.state.genData}
                       ref={(r) => this.csvLink = r}
                       filename={'genData.csv'}
                       target="_blank"
-                      >DOWNLOAD (general data)
+                      >GENERAL
                   </CSVLink>
                   <CSVLink
-                      className="button"
+                      className="singleDownload"
                       data={this.state.raceData}
                       ref={(r) => this.csvLink = r}
                       filename={'raceEthnData.csv'}
                       target="_blank"
-                    >DOWNLOAD (race/ethnicity data)
+                    >RACE/ETHNICITY
                   </CSVLink>
                   <CSVLink
-                      className="button"
+                      className="singleDownload"
                       data={this.state.programData}
                       ref={(r) => this.csvLink = r}
                       filename={'programData.csv'}
                       target="_blank"
-                      >DOWNLOAD (program data)
+                      >PROGRAMS
                     </CSVLink>
+                    </p>
               </segment>
         </div>
        ) : <Loading type="balls" color="lightseagreen" />}

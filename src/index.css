@@ -88,6 +88,30 @@ footer {
   max-width: 150px;
 }
 
+.downloadBar {
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-style: outset;
+  box-shadow: 3px 3px lightseagreen;  
+  border-color: lightseagreen;
+  margin: 20px;
+  padding: 6px;
+}
+
+.singleDownload {
+  color: white;
+  text-decoration: none;
+  padding-top: 10px;
+}
+
+.singleDownload:hover {
+  color: white;
+  box-shadow: 4px 4px lightseagreen;  
+  background-color: darkslategray;
+}
+
 .button:hover {
   color: white;
   box-shadow: 4px 4px lightseagreen;  
