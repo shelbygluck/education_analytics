@@ -43,6 +43,7 @@ class App extends Component {
       const data = organizeInitialData(response)
       this.setState(data)
       this.setState({ dataLoaded: true })
+      console.log(this.state)
    }
 
    saveAsPDF = () => {
@@ -79,7 +80,7 @@ class App extends Component {
                      <segment>
                         <p className="large">Graph 1</p>
                         <DoughnutChart labels={this.state.raceCSV[0]} datasets={this.state.raceCSV[1]} />
-                        
+
                         <p className="large">Graph 2</p>
                         <p className="large">Graph 3</p>
                      </segment>

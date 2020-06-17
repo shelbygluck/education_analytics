@@ -15,7 +15,7 @@ export class DoughnutChart extends Component {
     }
 
     render() {
-        console.log(this.props.datasets)
+        // console.log(this.props.datasets)
         return (
             <div className="chart">
                     <h3>Race Breakdown</h3>
