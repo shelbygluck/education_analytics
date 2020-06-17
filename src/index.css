@@ -1,21 +1,21 @@
 body {
-  margin: 0;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  color: white;
-  background-color: black;
+	margin: 0;
+	font-family: Verdana, Geneva, Tahoma, sans-serif;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	color: white;
+	background-color: black;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+	font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+		monospace;
 }
 
 #main {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 }
 
 /* #bottomLogo {
@@ -24,105 +24,105 @@ code {
 } */
 
 #container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin: 20px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	margin: 20px;
 }
 
 segment {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
 }
 
 footer {
-  display: flex;
-  position: fixed;
-  bottom: 0;
+	display: flex;
+	position: fixed;
+	bottom: 0;
 }
 
 .small {
-  display: flex;
-  margin: 20px;
-  padding: 6px;
-  border-style: outset;
-  box-shadow: 2px 2px darkslategray;
-  flex-grow: 1;
-  border-color: lightseagreen;
-  background-color: lightseagreen;
-  justify-content: center;
+	display: flex;
+	margin: 20px;
+	padding: 6px;
+	border-style: outset;
+	box-shadow: 2px 2px darkslategray;
+	flex-grow: 1;
+	border-color: lightseagreen;
+	background-color: lightseagreen;
+	justify-content: center;
 }
 
 .large {
-  display: flex;
-  margin: 20px;
-  padding: 6px;
-  border-style: outset;
-  box-shadow: 2px 2px darkslategray;
-  flex-grow: 3;
-  border-color: lightcoral;
-  background-color: lightcoral;
+	display: flex;
+	margin: 20px;
+	padding: 6px;
+	border-style: outset;
+	box-shadow: 2px 2px darkslategray;
+	flex-grow: 3;
+	border-color: lightcoral;
+	background-color: lightcoral;
 }
 
 .small:hover {
-  box-shadow: 4px 4px darkslategray;
+	box-shadow: 4px 4px darkslategray;
 }
 
 .large:hover {
-  box-shadow: 4px 4px darkslategray;
+	box-shadow: 4px 4px darkslategray;
 }
 
 .button {
-  color: white;
-  display: flex;
-  justify-content: center;
-  margin: 20px;
-  padding: 6px;
-  border-style: outset;
-  box-shadow: 3px 3px lightseagreen;  
-  flex-grow: 1;
-  border-color: lightseagreen;
-  text-decoration: none;
-  max-width: 150px;
+	color: white;
+	display: flex;
+	justify-content: center;
+	margin: 20px;
+	padding: 6px;
+	border-style: outset;
+	box-shadow: 3px 3px lightseagreen;
+	flex-grow: 1;
+	border-color: lightseagreen;
+	text-decoration: none;
+	max-width: 150px;
 }
 
 .downloadBar {
-  color: white;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  border-style: outset;
-  box-shadow: 3px 3px lightseagreen;  
-  border-color: lightseagreen;
-  margin: 20px;
-  padding: 6px;
+	color: white;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	border-style: outset;
+	box-shadow: 3px 3px lightseagreen;
+	border-color: lightseagreen;
+	margin: 20px;
+	padding: 6px;
 }
 
 .singleDownload {
-  color: white;
-  text-decoration: none;
-  padding-top: 10px;
+	color: white;
+	text-decoration: none;
+	padding-top: 10px;
 }
 
 .singleDownload:hover {
-  color: white;
-  box-shadow: 4px 4px lightseagreen;  
-  background-color: darkslategray;
+	color: white;
+	box-shadow: 4px 4px lightseagreen;
+	background-color: darkslategray;
 }
 
 .button:hover {
-  color: white;
-  box-shadow: 4px 4px lightseagreen;  
-  background-color: darkslategray;
+	color: white;
+	box-shadow: 4px 4px lightseagreen;
+	background-color: darkslategray;
 }
 
 h2 {
-  color: lightseagreen;
-  text-shadow: 1px 1px;
+	color: lightseagreen;
+	text-shadow: 1px 1px;
 }
 
 h2:hover {
-  color: lightcoral;
+	color: lightcoral;
 }
