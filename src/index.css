@@ -77,6 +77,7 @@ footer {
 .button {
   color: white;
   display: flex;
+  justify-content: center;
   margin: 20px;
   padding: 6px;
   border-style: outset;
@@ -86,8 +87,9 @@ footer {
 }
 
 .button:hover {
-  color: lightcoral;
+  color: white;
   box-shadow: 4px 4px lightseagreen;  
+  background-color: darkslategray;
 }
 
 h2 {

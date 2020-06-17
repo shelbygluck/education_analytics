@@ -3,6 +3,8 @@ import logo from './logo.svg';
 import './App.css';
 import axios from 'axios'
 import {Loading} from './loading'
+import html2canvas from 'html2canvas'
+import pdfConverter from 'jspdf'
 
 class App extends Component {
   constructor(props) {
@@ -49,12 +51,25 @@ class App extends Component {
     console.log(this.state)
   }
 
+  saveAsPDF = () => {
+    let input = window.document.getElementById('schoolData')
+    html2canvas(input)
+      .then(canvas => {
+        const imgData = canvas.toDataURL('image/png')
+        const pdf = new pdfConverter('l', 'pt')
+        pdf.addImage(imgData, 'JPEG', 15, 110, 800, 450)
+        pdf.save('ea.pdf')
+      })
+      .catch(err => console.log(err.message))
+  }
+
   render() {   
     const dataLoaded = this.state.dataLoaded
     return (
       <div id="main">
       {dataLoaded ? (
         <div id="container">
+        <div id="schoolData">
           <segment>
               <p className="small">{this.state.name}</p>
               <p className="small">{this.state.website}</p>
@@ -70,8 +85,9 @@ class App extends Component {
               <p className="large">Graph 2</p>
               <p className="large">Graph 3</p>
             </segment>
+            </div>
             <segment>
-              <p onClick={() => {alert('save')}} className="button">SAVE</p>
+              <p onClick={this.saveAsPDF}  className="button">SAVE</p>
               <p onClick={() => {alert('download')}} className="button">DOWNLOAD</p>
               <p onClick={() => {alert('print')}} className="button" >PRINT</p>
               </segment>
