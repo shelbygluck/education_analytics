@@ -2,6 +2,7 @@ import {defaults, Doughnut} from 'react-chartjs-2'
 import React, {Component} from 'react'
 defaults.global.legend.display = false
 defaults.global.title.display = true
+defaults.global.animation.duration = 3000
 
 export class DoughnutChart extends Component {
 
@@ -15,7 +16,7 @@ export class DoughnutChart extends Component {
             <div className="chart">
                     <Doughnut
                         data={{
-                            labels: this.state.labels,
+                            labels: this.props.labels,
                             datasets: [
                             {
                                 data: this.props.datasets,

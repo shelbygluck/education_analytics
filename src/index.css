@@ -37,6 +37,7 @@ segment {
 #footer {
 	display: flex;
 	flex-direction: column;
+	align-items: center;
 }
 
 .logo {
@@ -107,9 +108,7 @@ segment {
 }
 
 .singleDownload:hover {
-	color: white;
-	box-shadow: 4px 4px lightseagreen;
-	background-color: darkslategray;
+	color: lightcoral;
 }
 
 .button:hover {

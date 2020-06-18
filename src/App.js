@@ -63,6 +63,7 @@ class App extends Component {
       return (
          <div id="main">
             {dataLoaded ? (
+               <div>
                <div id="container">
                   <div id="schoolData">
                      <segment>
@@ -127,10 +128,7 @@ class App extends Component {
                         PRINT
                      </p>
                   </segment>
-               </div>
-            ) : (
-               <Loading type="balls" color="lightseagreen" />
-            )}
+               </div> 
             <div id="footer">
                <h2 id="bottomLogo">EDUCATION ANALYTICS</h2>
                <div className="logo">
@@ -147,8 +145,11 @@ class App extends Component {
                <Loading type="bars" color="lightseagreen" />
                <Loading type="bars" color="darkslategray" />
                </div>
-               
             </div>
+            </div>
+            ) : (
+               <Loading type="balls" color="lightseagreen" />
+            )}
          </div>
       )
    }
