@@ -85,7 +85,10 @@ segment {
 	color: white;
 	display: flex;
 	justify-content: center;
-	margin: 20px;
+    margin-top: 70px;
+    margin-bottom: 30px;
+    margin-left: 20px;
+    margin-right: 20px;
 	padding: 6px;
 	border-style: outset;
 	box-shadow: 3px 3px lightseagreen;

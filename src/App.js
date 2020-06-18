@@ -46,6 +46,7 @@ class App extends Component {
         const data = organizeInitialData(response)
         this.setState(data)
         this.setState({ dataLoaded: true })
+        console.log(this.state)
     }
 
     saveAsPDF = () => {
