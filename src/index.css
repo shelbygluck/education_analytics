@@ -60,7 +60,7 @@ segment {
 	flex-grow: 1;
 	border-color: lightseagreen;
 	background-color: lightseagreen;
-	justify-content: center;
+    justify-content: center;
 }
 
 .small:hover {

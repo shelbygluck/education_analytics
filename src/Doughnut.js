@@ -1,7 +1,6 @@
 import {defaults, Doughnut} from 'react-chartjs-2'
 import React, {Component} from 'react'
-defaults.global.legend.display = false
-defaults.global.animation.duration = 3000
+defaults.global.animation.duration = 4000
 
 export class DoughnutChart extends Component {
 
@@ -44,6 +43,11 @@ export class DoughnutChart extends Component {
                             }]
                         }}
                         height='300%'
+                        options={{
+                            legend: {
+                                display: false
+                            }
+                        }}
                     />
                     <br />
             </div>

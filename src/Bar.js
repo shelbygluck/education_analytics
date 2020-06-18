@@ -1,7 +1,5 @@
 import {defaults, Bar} from 'react-chartjs-2'
 import React, {Component} from 'react'
-defaults.global.legend.display = false
-defaults.global.animation.duration = 3000
 
 export class BarChart extends Component {
 
@@ -44,7 +42,11 @@ export class BarChart extends Component {
                                     beginAtZero: true,
                                   },
                                 }]
-                            }}
+                            },
+                            legend: {
+                                display: 'true'
+                            }
+                        }
                         }
                     />
                     <br />
