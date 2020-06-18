@@ -9,6 +9,7 @@ import { CSVLink } from "react-csv"
 import organizeInitialData from "./utils"
 import apiKey from './apiKey'
 import {DoughnutChart} from './Doughnut'
+import {BarChart} from './Bar'
 
 class App extends Component {
    constructor(props) {
@@ -30,7 +31,8 @@ class App extends Component {
          genCSV: [],
          programCSV: [],
          raceCSV: [],
-         testCSV: [],
+         satCSV: [],
+         actCSV: [],
          dataLoaded: false,
       }
    }
@@ -103,7 +105,7 @@ class App extends Component {
                         </div>
                         <div className="chartContainer">
                         <h3>Academic Programs</h3>
-                        <DoughnutChart labels={this.state.programCSV[0]} datasets={this.state.programCSV[1]} title="Program Breakdown" />
+                        <DoughnutChart labels={this.state.programCSV[0]} datasets={this.state.programCSV[1]} />
                         <CSVLink
                            className="singleDownload"
                            data={this.state.programCSV}
@@ -114,10 +116,14 @@ class App extends Component {
                            DOWNLOAD THIS DATA
                         </CSVLink>
                         </div>
-                        {/* <div className="chartContainer">
-                        <h3>Standardized Tests</h3>
-                        <DoughnutChart labels={this.state.testCSV[0]} datasets={this.state.testCSV[1]} title="Program Breakdown" />
-                        </div> */}
+                        <div className="chartContainer">
+                        <h3>SAT by Percentile</h3>
+                        <BarChart labels={this.state.satCSV[0]} data25={this.state.satCSV[1]} data50={this.state.satCSV[2]} data75={this.state.satCSV[3]} />
+                        </div>
+                        <div className="chartContainer">
+                        <h3>ACT By Percentile</h3>
+                        <BarChart labels={this.state.actCSV[0]} data25={this.state.actCSV[1]} data50={this.state.actCSV[2]} data75={this.state.actCSV[3]} />
+                        </div>
                      </segment>
                   </div>
                   <segment>

@@ -1,7 +1,6 @@
 import {defaults, Doughnut} from 'react-chartjs-2'
 import React, {Component} from 'react'
 defaults.global.legend.display = false
-defaults.global.title.display = true
 defaults.global.animation.duration = 3000
 
 export class DoughnutChart extends Component {

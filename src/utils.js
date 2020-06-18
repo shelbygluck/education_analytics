@@ -38,14 +38,32 @@ export default function organizeInitialData(data) {
 	const raceHeader = Object.keys(noNullRace)
 	const raceAccessors = Object.values(noNullRace)
  
-	const actHeader = Object.keys(actScores)
-	const actAccessors = Object.values(actScores)
- 
-	const satHeader = Object.keys(satScores)
-	const satAccessors = Object.values(satScores)
- 
-	const testHeader = actHeader.concat(satHeader)
-	const testAccessors = actAccessors.concat(satAccessors)
+	//ordering test scores by percentile in very specific order for overlay bar chart
+	const act25 = actScores['25th_percentile']
+	const act25reading = act25.english
+	const act25writing = act25.writing
+	const act25math = act25.math
+	const act50 = actScores['midpoint']
+	const act50reading = act50.english
+	const act50writing = act50.writing
+	const act50math = act50.math
+	const act75 = actScores['75th_percentile']
+	const act75reading = act75.english
+	const act75writing = act75.writing
+	const act75math = act75.math
+
+	const sat25 = satScores['25th_percentile']
+	const sat25reading = sat25['critical_reading']
+	const sat25writing = sat25.writing
+	const sat25math = sat25.math
+	const sat50 = satScores['midpoint']
+	const sat50reading = sat50['critical_reading']
+	const sat50writing = sat50.writing
+	const sat50math = sat50.math
+	const sat75 = satScores['75th_percentile']
+	const sat75reading = sat75['critical_reading']
+	const sat75writing = sat75.writing
+	const sat75math = sat75.math
 
 	//nesting labels and data values into single array for CSV formatting
 	const genCSV = [
@@ -54,8 +72,9 @@ export default function organizeInitialData(data) {
 	]
 	const programCSV = [programHeader, programAccessors]
 	const raceCSV = [raceHeader, raceAccessors]
-	const testCSV = [testHeader, testAccessors]
- 
+	const satCSV = [['SAT-reading', 'SAT-writing', 'SAT-math'], [sat25reading, sat25writing, sat25math], [sat50reading, sat50writing, sat50math], [sat75reading, sat75writing, sat75math]]
+	const actCSV = [['ACT-reading', 'ACT-writing', 'ACT-math'], [act25reading, act25writing, act25math], [act50reading, act50writing, act50math], [act75reading, act75writing, act75math]]
+	console.log(act75writing)
 	//returning final versions of data to be set into local state in componentDidMount
 	return {
 	   name: name,
@@ -73,6 +92,7 @@ export default function organizeInitialData(data) {
 	   genCSV: genCSV,
 	   raceCSV: raceCSV,
 	   programCSV: programCSV,
-	   testCSV: testCSV,
+	   satCSV: satCSV,
+	   actCSV: actCSV
 	}
  }
