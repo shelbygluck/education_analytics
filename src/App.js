@@ -7,10 +7,10 @@ import html2canvas from "html2canvas"
 import pdfConverter from "jspdf"
 import organizeInitialData from "./utils"
 import apiKey from './apiKey'
-import {DoughnutChart} from './Doughnut'
 import {BarChart} from './Bar'
 import {DownloadLink} from './DownloadLink'
-import {SliderComponent} from './SliderComponent'
+import {RaceSlider} from './RaceSlider'
+import {ProgramSlider} from './ProgramSlider'
 
 class App extends Component {
     constructor(props) {
@@ -82,15 +82,12 @@ class App extends Component {
                      <segment>
                         <div className="chartContainer">
                         <h3>Race/Ethnicity</h3>
-
-                        <SliderComponent labels={this.state.raceCSV[0]} datasets={this.state.raceCSV[1]}/>
-
-                        {/* <DoughnutChart labels={this.state.raceCSV[0]} datasets={this.state.raceCSV[1]}  /> */}
+                        <RaceSlider labels={this.state.raceCSV[0]} datasets={this.state.raceCSV[1]} />
                         <DownloadLink data={this.state.raceCSV} filename="raceEthnData.csv" />
                         </div>
                         <div className="chartContainer">
                         <h3>Academic Programs</h3>
-                        <DoughnutChart labels={this.state.programCSV[0]} datasets={this.state.programCSV[1]} />
+                        <ProgramSlider labels={this.state.programCSV[0]} datasets={this.state.programCSV[1]} />
                         <DownloadLink data={this.state.programCSV} filename="programData.csv" />
                         </div>
                      </segment>

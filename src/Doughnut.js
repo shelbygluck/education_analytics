@@ -19,33 +19,26 @@ export class DoughnutChart extends Component {
                             {
                                 data: this.props.datasets,
                                 backgroundColor: [    
+                                      'lightgreen',
+                                      'peachpuff',
+                                      'gray',
+                                      'bluegreen',
                                       'lightslategray',
                                       'lightseagreen',
                                       'darkslategray',       
                                       'white',
                                       'lightcoral',
-                                      'lightseagreen',
-                                      'lightslategray',
-                                      'darkslategray',       
-                                      'white',
-                                      'lightcoral',
-                                      'lightslategray',
-                                      'lightseagreen',
-                                      'darkslategray',       
-                                      'white',
-                                      'lightcoral',
-                                      'lightslategray',
-                                      'lightseagreen',
-                                      'darkslategray',       
-                                      'white',
-                                      'lightcoral',
+                                      'beige',
+                                      'darkblue'
                             ]
                             }]
                         }}
-                        height='300%'
+                        height='200%'
                         options={{
                             legend: {
-                                display: false
+                                display: true,
+                                position: 'left',
+                                align: 'center'
                             }
                         }}
                     />

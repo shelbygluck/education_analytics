@@ -70,10 +70,10 @@ segment {
 .chartContainer {
 	color: lightseagreen;
 	display: flex;
-	flex-direction: column;
+    flex-direction: column;
+    justify-content: center;
 	align-items: center;
-	margin: 30px;
-
+    margin: 30px;
 }
 
 .chart {

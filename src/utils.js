@@ -21,7 +21,7 @@ export default function organizeInitialData(data) {
 	//filtering through data for graphs to remove empty categories
 	let noNullPrograms = {}
 	for (let [key, value] of Object.entries(programsByPercent)) {
-		if (value !== 0 && value > .01) {noNullPrograms[key] = value}
+		if (value !== 0 && value > .03) {noNullPrograms[key] = value}
 	}
 
 	let noNullRace = {}
@@ -104,7 +104,6 @@ export default function organizeInitialData(data) {
 
     let noNullRace = {}
 	for (let [key, value] of Object.entries(raceBreakdown)) {
-		//transforming percent of student body to actual number of students
 		let numOfStudents = Math.round(size * value)
 		if (value !== null) {noNullRace[key] = numOfStudents}
       }
@@ -114,4 +113,20 @@ export default function organizeInitialData(data) {
     const raceCSV = [raceHeader, raceAccessors]
 
     return raceCSV
+ }
+
+
+ export const organizeProgramData = (data, year) => {
+	const programsByPercent = data[year].academics.program_percentage
+
+    let noNullPrograms = {}
+	for (let [key, value] of Object.entries(programsByPercent)) {
+		if (value !== 0 && value > .03) {noNullPrograms[key] = value}
+    }
+    
+	const programHeader = Object.keys(noNullPrograms)
+    const programAccessors = Object.values(noNullPrograms)
+    const programCSV = [programHeader, programAccessors]
+
+    return programCSV
  }

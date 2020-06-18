@@ -19,7 +19,7 @@ function log(value) {
   console.log(value); //eslint-disable-line
 }
 
-export class SliderComponent extends Component {
+export class RaceSlider extends Component {
     constructor(props) {
         super(props)
         this.state = {
