@@ -64,6 +64,7 @@ export default function organizeInitialData(data) {
 	const sat75reading = sat75['critical_reading']
 	const sat75writing = sat75.writing
 	const sat75math = sat75.math
+	const testHeader = ['reading', 'writing', 'math']
 
 	//nesting labels and data values into single array for CSV formatting
 	const genCSV = [
@@ -72,9 +73,9 @@ export default function organizeInitialData(data) {
 	]
 	const programCSV = [programHeader, programAccessors]
 	const raceCSV = [raceHeader, raceAccessors]
-	const satCSV = [['SAT-reading', 'SAT-writing', 'SAT-math'], [sat25reading, sat25writing, sat25math], [sat50reading, sat50writing, sat50math], [sat75reading, sat75writing, sat75math]]
-	const actCSV = [['ACT-reading', 'ACT-writing', 'ACT-math'], [act25reading, act25writing, act25math], [act50reading, act50writing, act50math], [act75reading, act75writing, act75math]]
-	console.log(act75writing)
+	const satCSV = [testHeader, [sat25reading, sat25writing, sat25math], [sat50reading, sat50writing, sat50math], [sat75reading, sat75writing, sat75math]]
+	const actCSV = [testHeader, [act25reading, act25writing, act25math], [act50reading, act50writing, act50math], [act75reading, act75writing, act75math]]
+
 	//returning final versions of data to be set into local state in componentDidMount
 	return {
 	   name: name,

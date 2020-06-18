@@ -116,6 +116,8 @@ class App extends Component {
                            DOWNLOAD THIS DATA
                         </CSVLink>
                         </div>
+                     </segment>
+                     <segment>
                         <div className="chartContainer">
                         <h3>SAT by Percentile</h3>
                         <BarChart labels={this.state.satCSV[0]} data25={this.state.satCSV[1]} data50={this.state.satCSV[2]} data75={this.state.satCSV[3]} />
@@ -154,7 +156,7 @@ class App extends Component {
             </div>
             </div>
             ) : (
-               <Loading type="balls" color="lightseagreen" />
+               <Loading type="balls" color="lightseagreen"/>
             )}
          </div>
       )
