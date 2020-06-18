@@ -1,15 +1,15 @@
 import React, { Component } from "react"
-import logo from "./logo.svg"
 import "./App.css"
 import axios from "axios"
 import { Loading } from "./loading"
 import html2canvas from "html2canvas"
 import pdfConverter from "jspdf"
-import { CSVLink } from "react-csv"
 import organizeInitialData from "./utils"
 import apiKey from './apiKey'
 import {DoughnutChart} from './Doughnut'
 import {BarChart} from './Bar'
+import {DownloadLink} from './DownloadLink'
+
 
 class App extends Component {
    constructor(props) {
@@ -79,70 +79,30 @@ class App extends Component {
                         <p className="small">
                            Student Population: {this.state.size}
                         </p>
-                        <CSVLink
-                              className="singleDownload"
-                              data={this.state.genCSV}
-                              ref={(r) => (this.csvLink = r)}
-                              filename={"genData.csv"}
-                              target="_blank"
-                           >
-                              DOWNLOAD <br/>  GENERAL DATA
-                           </CSVLink>
+                        <DownloadLink data={this.state.genCSV} filename="genData.csv" />
                      </segment>
                      <segment>
                         <div className="chartContainer">
                         <h3>Race/Ethnicity</h3>
                         <DoughnutChart labels={this.state.raceCSV[0]} datasets={this.state.raceCSV[1]}  />
-                        <CSVLink
-                           className="singleDownload"
-                           data={this.state.raceCSV}
-                           ref={(r) => (this.csvLink = r)}
-                           filename={"raceEthnData.csv"}
-                           target="_blank"
-                        >
-                           DOWNLOAD THIS DATA
-                        </CSVLink>
+                        <DownloadLink data={this.state.raceCSV} filename="raceEthnData.csv" />
                         </div>
                         <div className="chartContainer">
                         <h3>Academic Programs</h3>
                         <DoughnutChart labels={this.state.programCSV[0]} datasets={this.state.programCSV[1]} />
-                        <CSVLink
-                           className="singleDownload"
-                           data={this.state.programCSV}
-                           ref={(r) => (this.csvLink = r)}
-                           filename={"programData.csv"}
-                           target="_blank"
-                        >
-                           DOWNLOAD THIS DATA
-                        </CSVLink>
+                        <DownloadLink data={this.state.programCSV} filename="programData.csv" />
                         </div>
                      </segment>
                      <segment>
                         <div className="chartContainer">
                         <h3>SAT by Percentile</h3>
                         <BarChart labels={this.state.satCSV[0]} data25={this.state.satCSV[1]} data50={this.state.satCSV[2]} data75={this.state.satCSV[3]} />
-                        <CSVLink
-                           className="singleDownload"
-                           data={this.state.satCSV}
-                           ref={(r) => (this.csvLink = r)}
-                           filename={"satDataBy25/50/75percentile.csv"}
-                           target="_blank"
-                        >
-                           DOWNLOAD THIS DATA
-                        </CSVLink>
+                        <DownloadLink data={this.state.satCSV} filename="satDataBy25/50/75percentile.csv" />
                         </div>
                         <div className="chartContainer">
                         <h3>ACT By Percentile</h3>
                         <BarChart labels={this.state.actCSV[0]} data25={this.state.actCSV[1]} data50={this.state.actCSV[2]} data75={this.state.actCSV[3]} />
-                        <CSVLink
-                           className="singleDownload"
-                           data={this.state.actCSV}
-                           ref={(r) => (this.csvLink = r)}
-                           filename={"actDataBy25/50/75percentile.csv"}
-                           target="_blank"
-                        >
-                           DOWNLOAD THIS DATA
-                        </CSVLink>
+                        <DownloadLink data={this.state.actCSV} filename="actDataBy25/50/75percentile.csv" />
                         </div>
                      </segment>
                   </div>
