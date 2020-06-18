@@ -49,12 +49,12 @@ class App extends Component {
     }
 
     saveAsPDF = () => {
-        let input = window.document.getElementById("schoolData")
+        let input = window.document.getElementById("main")
         html2canvas(input)
         .then((canvas) => {
             const imgData = canvas.toDataURL("image/png")
             const pdf = new pdfConverter("l", "pt")
-            pdf.addImage(imgData, "JPEG", 15, 110, 800, 450)
+            pdf.addImage(imgData, "JPEG", 10, 0, 680, 550)
             pdf.save("ea.pdf")
         })
         .catch((err) => console.log(err.message))
@@ -65,9 +65,9 @@ class App extends Component {
         return (
             <div id="main">
                 {dataLoaded ? (
-                <div>
+                <div id="schoolData">
                 <div id="container">
-                    <div id="schoolData">
+                    <div>
                         <segment>
                             <p className="small">{this.state.name}</p>
                             <p className="small">{this.state.website}</p>
@@ -75,10 +75,8 @@ class App extends Component {
                         <segment>
                             <p className="small">{this.state.city}</p>
                             <p className="small">{this.state.state}</p>
-                        <p className="small">{this.state.zip}</p>
-                        <p className="small">
-                           Student Population: {this.state.size}
-                        </p>
+                            <p className="small">{this.state.zip}</p>
+                            <p className="small">Student Population: {this.state.size}</p>
                         <DownloadLink data={this.state.genCSV} filename="genData.csv" />
                      </segment>
                      <segment>
