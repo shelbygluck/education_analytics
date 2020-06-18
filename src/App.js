@@ -116,7 +116,6 @@ class App extends Component {
             <div id="footer">
                <h2 id="bottomLogo">EDUCATION ANALYTICS</h2>
                <LoadingContainer />
-               <LoadingContainer />
             </div>
             </div>
             ) : (

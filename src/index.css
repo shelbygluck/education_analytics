@@ -1,3 +1,9 @@
+/*affects printed page dimensions*/
+@page {
+    size: 25cm 35.7cm;
+    margin: 5mm 5mm 5mm 5mm; 
+}
+
 body {
 	margin: 0;
 	font-family: Verdana, Geneva, Tahoma, sans-serif;
