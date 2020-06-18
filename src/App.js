@@ -1,6 +1,7 @@
 import React, { Component } from "react"
 import "./App.css"
 import axios from "axios"
+import LoadingContainer from './LoadingContainer'
 import { Loading } from "./loading"
 import html2canvas from "html2canvas"
 import pdfConverter from "jspdf"
@@ -12,69 +13,68 @@ import {DownloadLink} from './DownloadLink'
 
 
 class App extends Component {
-   constructor(props) {
-      super(props)
-      this.state = {
-         name: "",
-         website: "",
-         alias: "",
-         city: "",
-         state: "",
-         zip: "",
-         size: 0,
-         programsByPercent: {},
-         raceBreakdown: {},
-         inStateTuition: 0,
-         outStateTuition: 0,
-         actScores: {},
-         satScores: {},
-         genCSV: [],
-         programCSV: [],
-         raceCSV: [],
-         satCSV: [],
-         actCSV: [],
-         dataLoaded: false,
-      }
-   }
+    constructor(props) {
+        super(props)
+        this.state = {
+            name: "",
+            website: "",
+            alias: "",
+            city: "",
+            state: "",
+            zip: "",
+            size: 0,
+            programsByPercent: {},
+            raceBreakdown: {},
+            inStateTuition: 0,
+            outStateTuition: 0,
+            actScores: {},
+            satScores: {},
+            genCSV: [],
+            programCSV: [],
+            raceCSV: [],
+            satCSV: [],
+            actCSV: [],
+            dataLoaded: false,
+        }
+    }
 
-   async componentDidMount() {
-      const responseMeta = await axios.get(
-         `https://api.data.gov/ed/collegescorecard/v1/schools/?school.operating=1&2015.academics.program_available.assoc_or_bachelors=true&2015.student.size__range=1..&school.degrees_awarded.predominant__range=1..3&school.degrees_awarded.highest__range=2..4&id=240444&api_key=${apiKey}`
-      )
-      let response = responseMeta.data.results[0]
-      const data = organizeInitialData(response)
-      this.setState(data)
-      this.setState({ dataLoaded: true })
-      console.log(this.state)
-   }
+    async componentDidMount() {
+        const responseMeta = await axios.get(
+            `https://api.data.gov/ed/collegescorecard/v1/schools/?school.operating=1&2015.academics.program_available.assoc_or_bachelors=true&2015.student.size__range=1..&school.degrees_awarded.predominant__range=1..3&school.degrees_awarded.highest__range=2..4&id=240444&api_key=${apiKey}`
+        )
+        let response = responseMeta.data.results[0]
+        const data = organizeInitialData(response)
+        this.setState(data)
+        this.setState({ dataLoaded: true })
+    }
 
-   saveAsPDF = () => {
-      let input = window.document.getElementById("schoolData")
-      html2canvas(input)
-         .then((canvas) => {
+    saveAsPDF = () => {
+        let input = window.document.getElementById("schoolData")
+        html2canvas(input)
+        .then((canvas) => {
             const imgData = canvas.toDataURL("image/png")
             const pdf = new pdfConverter("l", "pt")
             pdf.addImage(imgData, "JPEG", 15, 110, 800, 450)
             pdf.save("ea.pdf")
-         })
-         .catch((err) => console.log(err.message))
-   }
+        })
+        .catch((err) => console.log(err.message))
+    }
 
-   render() {
-      const dataLoaded = this.state.dataLoaded
-      return (
-         <div id="main">
-            {dataLoaded ? (
-               <div>
-               <div id="container">
-                  <div id="schoolData">
-                     <segment>
-                        <p className="small">{this.state.name}</p>
-                        <p className="small">{this.state.website}</p>
-                     </segment>
-                     <segment>
-                        <p className="small">{this.state.city}</p>
-                        <p className="small">{this.state.state}</p>
+    render() {
+        const dataLoaded = this.state.dataLoaded
+        return (
+            <div id="main">
+                {dataLoaded ? (
+                <div>
+                <div id="container">
+                    <div id="schoolData">
+                        <segment>
+                            <p className="small">{this.state.name}</p>
+                            <p className="small">{this.state.website}</p>
+                        </segment>
+                        <segment>
+                            <p className="small">{this.state.city}</p>
+                            <p className="small">{this.state.state}</p>
                         <p className="small">{this.state.zip}</p>
                         <p className="small">
                            Student Population: {this.state.size}
@@ -117,20 +117,8 @@ class App extends Component {
                </div> 
             <div id="footer">
                <h2 id="bottomLogo">EDUCATION ANALYTICS</h2>
-               <div className="logo">
-               <Loading type="bars" color="darkslategray" />
-               <Loading type="bars" color="lightseagreen" />
-               <Loading type="bars" color="lightcoral" />
-               <Loading type="bars" color="lightseagreen" />
-               <Loading type="bars" color="darkslategray" />
-               </div>
-               <div className="logo">
-               <Loading type="bars" color="darkslategray" />
-               <Loading type="bars" color="lightseagreen" />
-               <Loading type="bars" color="lightcoral" />
-               <Loading type="bars" color="lightseagreen" />
-               <Loading type="bars" color="darkslategray" />
-               </div>
+               <LoadingContainer />
+               <LoadingContainer />
             </div>
             </div>
             ) : (
