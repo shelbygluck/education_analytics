@@ -10,6 +10,18 @@ import apiKey from './apiKey'
 import {DoughnutChart} from './Doughnut'
 import {BarChart} from './Bar'
 import {DownloadLink} from './DownloadLink'
+import {SliderComponent} from './SliderComponent'
+import 'rc-slider/assets/index.css'
+import Slider, { Range } from 'rc-slider';
+
+const style = { width: 400, margin: 50 };
+const marks = {
+  '0': '2015',
+  25: '2016',
+  50: '2017',
+  75: '2018',
+  '100': '2019',
+};
 
 
 class App extends Component {
@@ -82,6 +94,11 @@ class App extends Component {
                      <segment>
                         <div className="chartContainer">
                         <h3>Race/Ethnicity</h3>
+
+                        <div style={style}>
+                            <Slider min={0} marks={marks} step={null} onChange={(value) => {console.log(value)}} defaultValue={2019} />
+                        </div>
+
                         <DoughnutChart labels={this.state.raceCSV[0]} datasets={this.state.raceCSV[1]}  />
                         <DownloadLink data={this.state.raceCSV} filename="raceEthnData.csv" />
                         </div>
