@@ -97,3 +97,21 @@ export default function organizeInitialData(data) {
 	   actCSV: actCSV
 	}
  }
+
+ export const organizeRaceData = (data, year) => {
+    const raceBreakdown = data[year].student.demographics.race_ethnicity
+    const size = data[year].student.size
+
+    let noNullRace = {}
+	for (let [key, value] of Object.entries(raceBreakdown)) {
+		//transforming percent of student body to actual number of students
+		let numOfStudents = Math.round(size * value)
+		if (value !== null) {noNullRace[key] = numOfStudents}
+      }
+      
+    const raceHeader = Object.keys(noNullRace)
+    const raceAccessors = Object.values(noNullRace)
+    const raceCSV = [raceHeader, raceAccessors]
+
+    return raceCSV
+ }

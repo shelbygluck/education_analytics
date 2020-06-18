@@ -1,7 +1,10 @@
 import 'rc-slider/assets/index.css'
-import Slider, { Range } from 'rc-slider';
+import Slider from 'rc-slider';
 import React, {Component} from 'react';
 import {DoughnutChart} from './Doughnut'
+import axios from 'axios'
+import apiKey from './apiKey'
+import {organizeRaceData} from './utils'
 
 const style = { width: 400, margin: 50 };
 const marks = {
@@ -20,17 +23,32 @@ export class SliderComponent extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            year: '2019'
+            year: 'latest',
+            labels: [],
+            datasets: [],
+            sliderMoved: false
         }
+        this.onSliderChange = this.onSliderChange.bind(this)
+        this.handleChange = this.handleChange.bind(this)
     }
 
 
     
-    onSliderChange = value => {
+    async onSliderChange(value) {
         console.log(this.state)
-      };
+        const responseMeta = await axios.get(
+            `https://api.data.gov/ed/collegescorecard/v1/schools/?school.operating=1&2015.academics.program_available.assoc_or_bachelors=true&2015.student.size__range=1..&school.degrees_awarded.predominant__range=1..3&school.degrees_awarded.highest__range=2..4&id=240444&api_key=${apiKey}`
+        )
+        let response = responseMeta.data.results[0]
+        let organizedRaceData = organizeRaceData(response, this.state.year)
+        this.setState({
+            labels: organizedRaceData[0],
+            datasets: organizedRaceData[1],
+            sliderMoved: true
+        })
+      }
     
-      handleChange = value => {
+    handleChange(value) {
         let newYear
         if (value === 75) {
             newYear = '2018'
@@ -41,12 +59,13 @@ export class SliderComponent extends Component {
         } else if (value === 0) {
             newYear = '2015'
         } else {
-            newYear = '2019'
+            newYear = 'latest'
         }
+
         this.setState({
-            year: newYear
-        })
-      }
+                year: newYear,
+            })
+    }
 
 
     render() {
@@ -55,10 +74,10 @@ export class SliderComponent extends Component {
                 <div style={style}>
                 <Slider min={0} marks={marks} step={null} onChange={this.handleChange} onAfterChange={this.onSliderChange} defaultValue={2019} />
                 </div>
-                {(this.state.year == '2019') ?
-                <DoughnutChart labels={this.props.labels} datasets={this.props.datasets}  />
+                {this.state.sliderMoved ?
+                <DoughnutChart labels={this.state.labels} datasets={this.state.datasets} />
                 :
-                <DoughnutChart labels={['yes', 'no']} datasets={[1, 2, 3]} />
+                <DoughnutChart labels={this.props.labels} datasets={this.props.datasets}  />
         }
             </div>
 )}}

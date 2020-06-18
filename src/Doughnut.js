@@ -1,6 +1,6 @@
 import {defaults, Doughnut} from 'react-chartjs-2'
 import React, {Component} from 'react'
-defaults.global.animation.duration = 4000
+defaults.global.animation.duration = 2000
 
 export class DoughnutChart extends Component {
 
