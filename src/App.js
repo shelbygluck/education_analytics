@@ -121,10 +121,28 @@ class App extends Component {
                         <div className="chartContainer">
                         <h3>SAT by Percentile</h3>
                         <BarChart labels={this.state.satCSV[0]} data25={this.state.satCSV[1]} data50={this.state.satCSV[2]} data75={this.state.satCSV[3]} />
+                        <CSVLink
+                           className="singleDownload"
+                           data={this.state.satCSV}
+                           ref={(r) => (this.csvLink = r)}
+                           filename={"satDataBy25/50/75percentile.csv"}
+                           target="_blank"
+                        >
+                           DOWNLOAD THIS DATA
+                        </CSVLink>
                         </div>
                         <div className="chartContainer">
                         <h3>ACT By Percentile</h3>
                         <BarChart labels={this.state.actCSV[0]} data25={this.state.actCSV[1]} data50={this.state.actCSV[2]} data75={this.state.actCSV[3]} />
+                        <CSVLink
+                           className="singleDownload"
+                           data={this.state.actCSV}
+                           ref={(r) => (this.csvLink = r)}
+                           filename={"actDataBy25/50/75percentile.csv"}
+                           target="_blank"
+                        >
+                           DOWNLOAD THIS DATA
+                        </CSVLink>
                         </div>
                      </segment>
                   </div>
