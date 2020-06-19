@@ -46,7 +46,6 @@ class App extends Component {
         const data = organizeInitialData(response)
         this.setState(data)
         this.setState({ dataLoaded: true })
-        console.log(this.state)
     }
 
     saveAsPDF = () => {
@@ -69,18 +68,18 @@ class App extends Component {
                 <div id="schoolData">
                 <div id="container">
                     <div>
-                        <segment>
+                        <div className="segment">
                             <p className="small">{this.state.name}</p>
                             <p className="small">{this.state.website}</p>
-                        </segment>
-                        <segment>
+                        </div>
+                        <div className="segment">
                             <p className="small">{this.state.city}</p>
                             <p className="small">{this.state.state}</p>
                             <p className="small">{this.state.zip}</p>
                             <p className="small">Student Population: {this.state.size}</p>
                         <DownloadLink data={this.state.genCSV} filename="genData.csv" />
-                     </segment>
-                     <segment>
+                     </div>
+                     <div className="segment">
                         <div className="chartContainer">
                         <h3>Race/Ethnicity</h3>
                         <RaceSlider labels={this.state.raceCSV[0]} datasets={this.state.raceCSV[1]} />
@@ -91,8 +90,8 @@ class App extends Component {
                         <ProgramSlider labels={this.state.programCSV[0]} datasets={this.state.programCSV[1]} />
                         <DownloadLink data={this.state.programCSV} filename="programData.csv" />
                         </div>
-                     </segment>
-                     <segment>
+                     </div>
+                     <div className="segment">
                         <div className="chartContainer">
                         <h3>SAT by Percentile</h3>
                         <BarChart labels={this.state.satCSV[0]} data25={this.state.satCSV[1]} data50={this.state.satCSV[2]} data75={this.state.satCSV[3]} />
@@ -103,16 +102,16 @@ class App extends Component {
                         <BarChart labels={this.state.actCSV[0]} data25={this.state.actCSV[1]} data50={this.state.actCSV[2]} data75={this.state.actCSV[3]} />
                         <DownloadLink data={this.state.actCSV} filename="actDataBy25/50/75percentile.csv" />
                         </div>
-                     </segment>
+                     </div>
                   </div>
-                  <segment>
+                  <div className="segment">
                      <p onClick={this.saveAsPDF} className="button">
                         SAVE
                      </p>
                      <p onClick={() => window.print()} className="button">
                         PRINT
                      </p>
-                  </segment>
+                  </div>
                </div> 
             <div id="footer">
                <h2 id="bottomLogo">EDUCATION ANALYTICS</h2>

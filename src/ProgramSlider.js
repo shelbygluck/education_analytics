@@ -8,11 +8,11 @@ import {organizeProgramData} from './utils'
 
 const style = { width: 400, margin: 50 }
 const marks = {
-  '0': '2015',
-  25: '2016',
-  50: '2017',
-  75: '2018',
-  '100': '2019',
+  0: 2015,
+  25: 2016,
+  50: 2017,
+  75: 2018,
+  100: 2019,
 }
 
 export class ProgramSlider extends Component {
@@ -31,7 +31,6 @@ export class ProgramSlider extends Component {
 
     
     async onSliderChange(value) {
-        console.log(this.state)
         const responseMeta = await axios.get(
             `https://api.data.gov/ed/collegescorecard/v1/schools/?school.operating=1&2015.academics.program_available.assoc_or_bachelors=true&2015.student.size__range=1..&school.degrees_awarded.predominant__range=1..3&school.degrees_awarded.highest__range=2..4&id=240444&api_key=${apiKey}`
         )
@@ -47,13 +46,13 @@ export class ProgramSlider extends Component {
     handleChange(value) {
         let newYear
         if (value === 75) {
-            newYear = '2018'
+            newYear = 2018
         } else if (value === 50) {
-            newYear = '2017'
+            newYear = 2017
         } else if (value === 25) {
-            newYear = '2016'
+            newYear = 2016
         } else if (value === 0) {
-            newYear = '2015'
+            newYear = 2015
         } else {
             newYear = 'latest'
         }

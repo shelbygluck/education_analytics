@@ -32,7 +32,7 @@ code {
 	margin: 20px;
 }
 
-segment {
+.segment {
 	display: flex;
 	flex-direction: row;
 	flex-wrap: wrap;

@@ -32,7 +32,7 @@ export class BarChart extends Component {
                             }
                         ]
                         }}
-                        height='300%'
+                        height={300}
                         options={{
                             scales: {
                                 xAxes: [{ stacked: true }],

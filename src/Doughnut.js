@@ -33,7 +33,7 @@ export class DoughnutChart extends Component {
                             ]
                             }]
                         }}
-                        height='200%'
+                        height={200}
                         options={{
                             legend: {
                                 display: true,
