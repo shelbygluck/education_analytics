@@ -1,4 +1,4 @@
-import {defaults, Bar} from 'react-chartjs-2'
+import {Bar} from 'react-chartjs-2'
 import React, {Component} from 'react'
 
 export class BarChart extends Component {

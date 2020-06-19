@@ -1,22 +1,18 @@
 import 'rc-slider/assets/index.css'
-import Slider from 'rc-slider';
-import React, {Component} from 'react';
+import Slider from 'rc-slider'
+import React, {Component} from 'react'
 import {DoughnutChart} from './Doughnut'
 import axios from 'axios'
 import apiKey from './apiKey'
 import {organizeRaceData} from './utils'
 
-const style = { width: 400, margin: 50 };
+const style = { width: 400, margin: 50 }
 const marks = {
   '0': '2015',
   25: '2016',
   50: '2017',
   75: '2018',
   '100': '2019',
-};
-
-function log(value) {
-  console.log(value); //eslint-disable-line
 }
 
 export class RaceSlider extends Component {
