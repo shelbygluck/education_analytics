@@ -7,6 +7,7 @@
 - [ ] Fork and clone this repo
 - [ ] npm i
 - [ ] npm start
+- [ ] open in http://localhost:3000 to view in browser
 ```
 
 💻 Technologies Used
