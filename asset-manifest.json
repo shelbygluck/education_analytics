@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/education_analytics/static/css/main.c7b22f8e.chunk.css",
+    "main.js": "/education_analytics/static/js/main.5b229f94.chunk.js",
+    "main.js.map": "/education_analytics/static/js/main.5b229f94.chunk.js.map",
+    "runtime-main.js": "/education_analytics/static/js/runtime-main.a1c5ae41.js",
+    "runtime-main.js.map": "/education_analytics/static/js/runtime-main.a1c5ae41.js.map",
+    "static/css/2.ed590494.chunk.css": "/education_analytics/static/css/2.ed590494.chunk.css",
+    "static/js/2.0638459f.chunk.js": "/education_analytics/static/js/2.0638459f.chunk.js",
+    "static/js/2.0638459f.chunk.js.map": "/education_analytics/static/js/2.0638459f.chunk.js.map",
+    "index.html": "/education_analytics/index.html",
+    "precache-manifest.60e41d5336ac88a488da4b4093095c1e.js": "/education_analytics/precache-manifest.60e41d5336ac88a488da4b4093095c1e.js",
+    "service-worker.js": "/education_analytics/service-worker.js",
+    "static/css/2.ed590494.chunk.css.map": "/education_analytics/static/css/2.ed590494.chunk.css.map",
+    "static/css/main.c7b22f8e.chunk.css.map": "/education_analytics/static/css/main.c7b22f8e.chunk.css.map",
+    "static/js/2.0638459f.chunk.js.LICENSE.txt": "/education_analytics/static/js/2.0638459f.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.a1c5ae41.js",
+    "static/css/2.ed590494.chunk.css",
+    "static/js/2.0638459f.chunk.js",
+    "static/css/main.c7b22f8e.chunk.css",
+    "static/js/main.5b229f94.chunk.js"
+  ]
+}
