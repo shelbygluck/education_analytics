@@ -2,6 +2,10 @@
 
 👀Developed by Shelby Gluck
 
+https://shelbygluck.github.io/education_analytics/
+
+This app pulls current public school data for the University of Wisconsin-Madison and creates an interactive analytics experience.
+
 ```
 🔐 Getting started is easy
 - [ ] Fork and clone this repo
